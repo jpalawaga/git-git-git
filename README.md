@@ -53,6 +53,32 @@ Ideas
         - reflog
     - should I cover working / stage / repo?
 
+I think I'll split this up into sections:
+#### I. Git Basics
+- Init
+- Clone
+- Add
+- Status
+- Commit
+- log
+
+#### II. Warming up
+- branch
+- stash
+- diff
+- merge
+- checkout
+- reset
+- cherry-pick
+
+#### II. Working alone, together
+- Push
+- Pull
+- Fetch
+- Remote
+- forking
+- pull requests
+
 Inspiration
 ===========
     - http://zachholman.com/talk/more-git-and-github-secrets/
@@ -85,7 +111,11 @@ Documents, in-editor version control... it's probably less likely.
 
     Instead... how about one of these? [pause]
 
-    These are more likely candidates, may actually being clutter if you end up sharing this out to other people, or commiting it so some other sort of source control system. Realistically, commented code should really be hiding around in your production-quality code base, and the older versions of the file in source control should give you enough history to eliminate the need for .bak files.
+    These are more likely candidates, may actually being clutter if you end up 
+sharing this out to other people, or commiting it so some other sort of source 
+control system. Realistically, commented code should really be hiding around in
+your production-quality code base, and the older versions of the file in source 
+control should give you enough history to eliminate the need for .bak files.
 
     ---
 
@@ -240,3 +270,7 @@ to this commit. These hashes are cool, and we'll look at them later. They're
 supposed to uniquely identify any given set of changes, regardless of time,
 content or author.
 
+Before we go any further, I'm going to mention to the mathmatically-inclined
+people that git is a dag (directed acyclical graph). Directed graph, no cycles.
+It's like a tree, but nodes can have multiple parents.
+What we just did was create the root node of that graph.
