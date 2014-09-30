@@ -71,7 +71,7 @@ I think I'll split this up into sections:
 - reset
 - cherry-pick
 
-#### II. Working alone, together
+#### IIIIIIIIIII. Working alone, together
 - Push
 - Pull
 - Fetch
