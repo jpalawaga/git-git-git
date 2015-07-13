@@ -98,11 +98,11 @@ DCVS
 
 
 
-
-
-
-
-
+  Live!
+    - Initializing a new Repository
+    - Status & Staging
+    - Commiting
+    - Log
 
 
 

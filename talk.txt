@@ -1,0 +1,162 @@
+Introduction
+    - A story about a version control-less world
+    - What is git?
+    - Why would I want to use git?
+    - What I'm going to tell you.
+        - How we're going to break this up (beginner/expert)
+
+    Welcome.
+
+    I'm James Palawaga, ________ at ________, and we're gonna spend the next
+40 minutes hacking on git. Before I start, I'd like to say that I could have 
+serialized all of this into a fancy 500-page-powerpoint that made it looks like
+I was executing commands, but lets be honest, it's more thrilling for me to try
+and pull live-demoing something off, and more exciting for you to watch me crash
+and burn. If you have any questions, please stop me at any time. There will also
+be a Q&A at the end, which may be a better time to pose any deep philosophical
+questions.
+
+    ---
+
+    So, who has seen this [image of the various coverletters]. The odds are 
+probable that you've done something like this before. It's nothing to be 
+ashamed of. Well, not yet anyhow. But, with the advent of dropbox, Google 
+Documents, in-editor version control... it's probably less likely.
+
+    Instead... how about one of these? [pause]
+
+    These are bad for other reasons, but mostly it's not a very "elegant" way 
+to keep track of all of your files.
+
+    ---
+
+    Alright, so what is git?
+
+    Git is a Distributed Version Control System.
+    A Version Control System is some sort of scheme for managing changes to 
+files, along with also managing "checkpoints" (or snapshots) of your 
+file/codebase.
+
+    A distributed version control system is one where everyone has as complete
+copy of the codebase, with all versions, and information swap with between any
+two points. A centralized repository can exist, but doesn't necessary. [Maybe
+an image of the repositiory web].
+
+    You should probably care what git is because:
+        - It's ubiqutous. Github has started a social coding renassaince that 
+          isn't slowing down. "trendy," if that's your thing
+
+        - It's gonna make your life easier. It is a separate way of thinking,
+          but once you master the basics, it's a super-sharp chef's knife.
+
+        - It's fast. Compared to other version control systems, git is among the
+          fastest. You can make an entire separate branch of your code in 40 
+          bytes.
+
+        - Knowing it is an employment check-box (if that matters to you)
+
+    Getting started with git is easy. 'git init'. Now you know.
+
+   ---
+
+   I'm going to go ahead and cover all of the basic git commands, and also some
+git philosophy. I implore you to try and not think of this in terms of another 
+source-control system, because odds are you'll just end up making your life more
+difficult.
+
+    I'll warn you all now that the general pattern of this is introduce concept,
+explain it in high-level terms, then explain how it actually works. That said, 
+it's not important that you understand the technical parts, its just there for 
+the geeks in the room. Alright, so, lets get on with it.
+
+   ---
+
+   Alright.
+   Let's start.
+   I'm going to start by introducing six commands. These ones are all pretty
+elementary, so it shouldn't be blowing any minds. The commands we'll cover are:
+init, clone, status, add, commit, and log.
+
+   SO. I've told you already that git init is the way to get started with git.
+"git clone" is another way, it'll essentially "copy" a codebase, along with its
+history, to your machine.
+
+I'm going to go ahead and initialize a new repository right now.
+
+<git init>
+
+... and in this folder, I'm going to create a new file.
+
+<vi recipes.txt>
+
+And now, we're going to add this file to git. Before we add it though, we're 
+going to take a look at the status of our repository. There is a git command
+called (convieniently) status. It will show you the current "status" of each of
+the files in your codebase.
+
+<git status>
+
+You can see that git recognizes that I have added a new file inside of the
+directory tree that git controls, although you can also see that git is not
+currently tracking it. Let's go ahead and track that file now.
+
+<git add recipes.txt>
+<git status>
+
+Cool. You can now see that the file is now staged for add.
+
+A digression on terminology:
+    - The RED files are in a "dirty" state. If they're tracked, then they're 
+      dirty because you've made changes to them. The files are in our working
+      directory. Think of it like a draft.
+    - Any GREEN files are said to be in the "staging area". This means that this
+      file is ready to be written to the history. It refers to the file in the
+      state it was when it was "added". Everytime you change a file, you need to
+      stage it if you wish to write it to the history.
+      
+      < make change >
+      < git status >
+      
+      You can see that git will make a distinction between what the working copy
+      is, and what the staged copy is. Again, only the staged copy will get
+      written to the history.
+
+Git add also accepts file paths, so if you want to add an entire directory, you
+can.
+     
+Alright. Lets make some magic. To write these files to the repository, we need
+to commit to the changes. We do
+
+< git commit >
+
+And when we do so, git prompts us to write a message. Generally, the first line
+should not excede 50 characters in length, and be concise about what the changes
+are. You write much more on the lines below, but really try to keep our messages
+50 chars or under. If you need more, chances are you probably should've commited
+something earlier. This means that
+
+"Today, I've started the beginning of what I hope to be the world's greatest
+recipe compendium" is way too long. How about "Adding recipes file." Yep.
+that'll do. short, concise. We don't need to even include any extra information,
+but we can if we want to on the lines below.
+
+<write/quit>
+
+And that's it! If we check out status, we can see that our staging area is now
+empty. 
+
+< git status >
+
+Now, for the final part of our introduction to git, we'll see our commit in the
+log.
+
+< git log >
+
+There it is! Magical. Commits are recorded with your name, the date, and your
+message. You'll also notice this hash. It's a finger print that uniquely
+identifies this commit (e.g. our code base, at a given point in time)
+
+Before we go any further, I'm going to mention to the mathmatically-inclined
+people that git is a dag (directed acyclical graph). Directed graph, no cycles.
+It's like a tree, but nodes can have multiple parents.
+What we just did was create the root node of that graph.
